@@ -20,6 +20,6 @@ typedef struct simple_perceptron {
 } Perceptron;
 
 Perceptron train(DataFrame data_frame, double learning_rate, void *epochs);
-DataFrame create_dataframe(char* file_path, const char* delimiter);
+DataFrame create_dataframe(char* file_path, const char* delimiter, int ignore_first_line);
 void visualize_weights(Perceptron perceptron);
 void visualize_dataframe(DataFrame data_frame);

@@ -67,7 +67,7 @@ double** add_bias(double **data_frame, int m, int n) {
 }
 
 
-DataFrame create_dataframe(char* file_path, const char* delimiter) {
+DataFrame create_dataframe(char* file_path, const char* delimiter, int ignore_first_line) {
     DataFrame frame;
     double** data_frame;
     int i, j, file_length = 0, file_width = 0;
@@ -108,6 +108,10 @@ DataFrame create_dataframe(char* file_path, const char* delimiter) {
 
     line = NULL;
     i = j = 0;
+    
+    if (ignore_first_line)
+      getline(&line, &parameter, fp);
+
     while((getline(&line, &parameter, fp)) != -1) {
         tok = strtok(line, delimiter);
         data_frame[i][j] = atof(tok);
